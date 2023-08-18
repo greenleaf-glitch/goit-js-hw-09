@@ -1,8 +1,60 @@
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
+
+const refs = {
+  form: document.querySelector('form'),
+  delay: document.querySelector("[name='delay']"),
+  step: document.querySelector("[name='step']"),
+  amount: document.querySelector("[name='amount']"),
+};
+
+refs.form.addEventListener('submit', onFormSubmit);
+
+function onFormSubmit(evt) {
+  evt.preventDefault();
+
+  const formData = {};
+
+  formData.delay = Number(refs.delay.value);
+  formData.step = Number(refs.step.value);
+  formData.amount = Number(refs.amount.value);
+
+  setTimeout(() => {
+    let delayStep = formData.step;
+
+    for (
+      let currentPromisePos = 0;
+      currentPromisePos < formData.amount;
+      currentPromisePos++
+    ) {
+      const promise = createPromise(currentPromisePos, delayStep);
+
+      promise
+        .then(({ position, delay }) => {
+          if (currentPromisePos === 0) delay += formData.delay;
+          Notify.success(`✅ Fulfilled promise ${position} in ${delay}ms`);
+        })
+        .catch(({ position, delay }) => {
+          if (currentPromisePos === 0) delay += formData.delay;
+          Notify.failure(`❌ Rejected promise ${position} in ${delay}ms`);
+        });
+
+      delayStep += formData.step;
+    }
+  }, formData.delay);
+
+  refs.form.reset();
+}
+
 function createPromise(position, delay) {
   const shouldResolve = Math.random() > 0.3;
+
   if (shouldResolve) {
-    // Fulfill
+    return new Promise((resolve, reject) => {
+      setTimeout(() => resolve({ position, delay }), delay);
+    });
   } else {
-    // Reject
+    return new Promise((resolve, reject) => {
+      setTimeout(() => reject({ position, delay }), delay);
+    });
   }
 }

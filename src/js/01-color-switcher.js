@@ -13,7 +13,7 @@ function onStartBtnClick() {
   changeColorIntervalID = setInterval(() => {
     const currentBgColor = getRandomHexColor();
     refs.bodyEl.style.backgroundColor = currentBgColor;
-    refs.startBtn.setAttribute('disabled', 'disabled');
+    refs.startBtn.disabled = true;
   }, 1000);
 }
 
