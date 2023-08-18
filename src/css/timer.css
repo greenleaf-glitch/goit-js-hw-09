@@ -1,3 +1,11 @@
+.timer-container {
+  display: block;
+  align-content: center;
+  width: 600px;
+  height: fit-content;
+  margin: 200 auto;
+}
+
 .timer {
   display: flex;
   width: 400px;
@@ -17,9 +25,23 @@
 }
 
 .value {
-  font-size: 60px;
+  font-size: 90px;
 }
 
 .label {
-  font-size: 25;
+  font-size: 25px;
+}
+
+.button {
+  margin-left: 120px;
+  width: 90px;
+  height: 50px;
+  background-color: #7ffae3;
+  border-radius: 15px;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+  font-size: 25px;
+}
+
+.input {
+  font-size: 20px;
 }

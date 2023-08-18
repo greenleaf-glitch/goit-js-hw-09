@@ -51,7 +51,7 @@ const initDate = dateInput.selectedDates[0];
 let currentDateObj = {};
 let intervalID;
 
-const BODY_BG_COLOR_GRAY = '#3c3c4f';
+const BODY_BG_COLOR_GRAY = '#546570';
 const BODY_TEXT_COLOR_WHITE = '#ffffff';
 
 refs.startBtn.disabled = true;

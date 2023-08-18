@@ -19,6 +19,7 @@ function onStartBtnClick() {
 
 function onStopBtnClick() {
   clearInterval(changeColorIntervalID);
+  refs.startBtn.disabled = false;
 }
 
 function getRandomHexColor() {

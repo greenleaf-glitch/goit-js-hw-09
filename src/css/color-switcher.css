@@ -1,0 +1,30 @@
+.button-container {
+  display: flex;
+  column-gap: 50px;
+  flex-direction: row;
+  justify-content: center;
+  width: 500px;
+  height: fit-content;
+  margin: 200 auto;
+}
+
+.button-start {
+  width: 150px;
+  height: 75px;
+  border-radius: 25px;
+  outline: 2px solid black;
+  box-shadow: 10px 15px 15px rgba(0, 0, 0, 0.5);
+  background-color: #7bb382;
+  font-size: 30px;
+  margin-right: 30px;
+}
+
+.button-stop {
+  width: 150px;
+  height: 75px;
+  border-radius: 25px;
+  outline: 2px solid black;
+  box-shadow: 10px 15px 15px rgba(0, 0, 0, 0.5);
+  background-color: #c46c64;
+  font-size: 30px;
+}
