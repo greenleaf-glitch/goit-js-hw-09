@@ -18,24 +18,28 @@ function onFormSubmit(evt) {
   formData.step = Number(refs.step.value);
   formData.amount = Number(refs.amount.value);
 
-  setTimeout(() => {
-    let delayStep = formData.step;
+  let delayStep = 0;
+  let promise;
 
+  setTimeout(() => {
     for (
-      let currentPromisePos = 0;
-      currentPromisePos < formData.amount;
+      let currentPromisePos = 1;
+      currentPromisePos <= formData.amount;
       currentPromisePos++
     ) {
-      const promise = createPromise(currentPromisePos, delayStep);
+      promise = createPromise(currentPromisePos, delayStep);
 
       promise
         .then(({ position, delay }) => {
-          if (currentPromisePos === 0) delay += formData.delay;
-          Notify.success(`✅ Fulfilled promise ${position} in ${delay}ms`);
+          Notify.success(
+            `✅ Fulfilled promise ${position} in ${delay + formData.delay}ms`
+          );
         })
         .catch(({ position, delay }) => {
           if (currentPromisePos === 0) delay += formData.delay;
-          Notify.failure(`❌ Rejected promise ${position} in ${delay}ms`);
+          Notify.failure(
+            `❌ Rejected promise ${position} in ${delay + formData.delay}ms`
+          );
         });
 
       delayStep += formData.step;
